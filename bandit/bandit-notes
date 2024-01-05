@@ -1,0 +1,87 @@
+---
+CS399/400: OverTheWire Bandit Notes
+Author: Ashok Khare
+---
+LEVEL 0
+-> Found password using 'cat readme' after logging in.
+-> Password for level 1: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+---
+LEVEL 1
+-> cat, vi will not work here since '-' is apparently a special character that correlates to stdin/stdout.
+-> According to an article linked on OverTheWire, you must specify the full filename of a file starting with a dash (i.e. ./-)
+--> Article in question: https://stackoverflow.com/questions/42187323/how-to-open-a-dashed-filename-using-terminal
+-> Found password using 'cat ./-' after logging in.
+-> Password for level 2: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+---
+LEVEL 2
+-> 'spaces in this filename', despite being the name of a single file, is on its own treated as four files ('spaces', 'in', 'this', 'filename')
+-> Must use single quotes ('') to specify a single literal (i.e., write "cat 'spaces in this filename'").
+-> Found password using "cat 'spaces in this filename'" after logging in.
+-> Password for level 3: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+---
+LEVEL 3
+-> The -a flag can be used with ls to see hidden files (files starting with '.')
+-> Found password as follows:
+--> Navigated to inhere directory using 'cd inhere' after logging in
+--> Searched for the hidden file using 'ls -a'
+--> Found password using 'cat .hidden'.
+-> Password for level 4: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+---
+LEVEL 4
+-> The 'file' command tests each file given in its arguments and prints out the type of information or data contained in the file (i.e. text, executable, etc.)
+-> Found password as follows:
+--> Navigated to inhere directory using 'cd inhere' after logging in
+--> Printed out the types of the files inside the directory with 'file ./-file00 ./-file01 ./-file02 ./-file03 ./-file04 ./-file05 ./-file06 ./-file07 ./-file08 ./-file09'
+--> -file07 was the only file of type 'text' (printing characters/ASCII-readable text).
+--> Found password using 'cat ./-file07'.
+-> Password for level 5: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+---
+LEVEL 5
+-> The 'find' command can be used to search through files in a directory that fulfill certain criteria, and print out the matches.
+-> Example criteria: -readable (human-readable), -executable (executable), -size 1033c (files with a size of 1033 bytes)
+-> Found password as follows:
+--> Navigated to inhere directory using 'cd inhere' after logging in
+--> Filtered the files inside the directory with 'find -readable -size 1033c'
+--> .file2 in the directory maybehere07 was the only match
+--> Found password using 'cat ./maybehere07/.file2'.
+-> Password for level 6: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+---
+LEVEL 6
+-> The find command can be used again here, this time with some special syntax '2>/dev/null'.
+-> 2>/dev/null apparently pipes everything in "file 2" (the file where stderr prints to) into the file /dev/null (still a little unclear on what "file 2" means).
+-> Found password as follows:
+--> After logging in, ran the command 'find / -size 33c -group bandit6 -user bandit7 2>/dev/null'.
+--> The only file returned from this was /var/lib/dpkg/info/bandit7.password.
+--> Found password using 'cat /var/lib/dpkg/info/bandit7.password'.
+-> Password for level 7: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+---
+LEVEL 7
+-> The 'grep' command can be used to search files for particular contents.
+-> Found password using 'grep "millionth" data.txt'.
+-> Password for level 8: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+---
+LEVEL 8
+-> The 'sort' command sorts the contents of a given file and prints the result.
+-> The 'uniq' command takes a given input and, with no flags, prints out every distinct line in the input once.
+--> With the -u flag, uniq prints only the lines that occur once in the input.
+-> Piping (|) allows you to direct the results of one command to flow immediately into another.
+-> Redirecting (>) allows you to save the results of a command to a file instead of printing to the screen.
+-> Found password using 'sort data.txt | uniq -u'.
+-> Password for level 9: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+---
+LEVEL 9
+-> The 'strings' command prints all sequences of at least 4 printable characters in a given file.
+--> Options include sets of permissible characters, minimum sequence length, among others.
+-> Found password using 'strings data.txt | grep "=="'.
+-> Password for level 10: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+---
+LEVEL 10
+-> The command 'base64' encodes the contents of a given file in Base64 (by default), or decodes from Base64 if the flag -d is used.
+-> Found password using 'base64 -d data.txt'.
+-> Password for level 11: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+---
+LEVEL 11
+-> The 'tr' command translates a given set of characters into a second given set of characters, matching characters by their placement in their set.
+-> Found password using 'cat data.txt | tr nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM abcdefghijklmnopqrstuvwxyzABCD
+EFGHIJKLMNOPQRSTUVWXYZ'.
+-> Password for level 12: JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
