@@ -85,3 +85,73 @@ LEVEL 11
 -> Found password using 'cat data.txt | tr nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM abcdefghijklmnopqrstuvwxyzABCD
 EFGHIJKLMNOPQRSTUVWXYZ'.
 -> Password for level 12: JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+---
+LEVEL 12
+-> Used the 'file' command to determine the type of the file (so as to know what command to use at each stage of decompression).
+-> Decoded hexdump and sent result to a new file using 'xxd -r [filename] > [new-filename]'.
+-> Used a combination of 'tar -xf [filename]', 'gzip -d [filename.gz]', and 'bzip2 -d [filename.bz2]' to decode the file.
+-> Used 'mv' to rename the file extension so to enable the other commands (e.g. 'mv data1.bin data1.gz).
+-> Once the file was fully uncompressed, found the password using 'cat [filename]'.
+-> Password for level 13: wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+---
+LEVEL 13
+-> Once logged in, ran another ssh using PKA by using the -i flag to specify the file with the private key
+-> Specifically, used the command 'ssh -p 2220 -i sshkey.private bandit14@localhost'.
+-> Once logged in as bandit14, navigated to the directory containing the password file with 'cd /etc/bandit_pass'.
+-> Found the password using 'cat bandit14'.
+-> Password for level 14: fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+---
+LEVEL 14
+-> Used the 'nc' command to open a general-purpose TCP connection by typing 'nc localhost 30000'
+-> Entered the password for level 14 (as shown in the entry for level 13) to find the next password.
+-> Password for level 15: jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+---
+LEVEL 15
+-> Used the 'openssl' command to establish a TLS connection by typing 'openssl s_client -connect localhost:30001'.
+-> Once the connection was established, entered the password for level 15 (as shown in the entry for level 13) to find the next password.
+-> Password for level 16: JQttfApK4SeyHwDlI9SXGR50qclOAil1
+---
+LEVEL 16
+-> Scanned for open ports using 'nmap -p31000-32000 localhost'.
+-> Checked which ports communicated using SSL by typing 'openssl s_client -connect localhost:[port-to-check]'.
+-> Got an RSA private key when the password for level 16 (shown in the entry for level 15) was provided to port 31790.
+-> Copied the RSA key to a temporary file and changed the file's permissions to read only for users with 'chmod go-rw secret.key'.
+-> Logged into bandit17's account using 'ssh -p 2220 -i secret.key bandit17@localhost'.
+---
+LEVEL 17
+-> The 'diff' command by default prints out the contents of each line that differs between two files.
+-> Found the password using 'diff passwords.old passwords.new'.
+-> Password for level 18: hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+---
+LEVEL 18
+-> You can write a terminal command (i.e. ls, cat [filename]) at the end of an ssh command to immediately run the terminal command on the remote host instead of having to open a shell to execute it in.
+-> Found password using 'ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme' and entering the password for level 18 (as shown in the entry for level 17).
+-> Password for level 19: awhqfNnAbc1naukrpqDYcF95h7HoMTrC
+---
+LEVEL 19
+-> The file bandit20-do has a setuid bit (s) set in the file permissions, which allows another user to run it with bandit20's permissions.
+-> Running bandit20-do followed by another command executes that command with bandit20's permissions.
+-> Found the password using './bandit20-do cat /etc/bandit_pass/bandit20'.
+-> Password for level 20: VxCazJaVykI6W36BkBU0mJTCM8rR95XT
+---
+LEVEL 20
+-> Used the 'screen' command to open a new terminal window, and in that window, typed Ctrl-a followed by c to create a second window.
+-> Typed Ctrl-a followed by either n or p to move between the windows.
+-> In the first window, opened a port for listening by typing 'nc -lp 12345'.
+-> In the second window, opened a connection to the port by typing './suconnect 12345'.
+-> Back in the first window, typed in and entered the password for level 20 (as shown in the entry for level 19). The password for level 21 was then printed to the screen.
+-> Password for level 21: NvEJF7oVjkddltPSrdKEFOllh9V1IBcq
+---
+LEVEL 21
+-> Opened the file 'cronjob_bandit22' in the directory '/etc/cron.d'.
+-> Ran 'cat /usr/bin/cronjob_bandit22.sh' to read its contents.
+-> Ran 'cat /usr/bin/cronjob_bandit22.sh' to read its contents.
+-> Ran 'cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv' to read its contents, and found the password there.
+-> Password for level 22: WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff
+---
+LEVEL 22
+-> Traversed to the directory '/etc/cron.d'.
+-> Ran 'cat /usr/bin/cronjob_bandit23.sh' to read its contents.
+-> Ran the command 'md5sum', which checks and prints MD5 checksums, then entered 'I am user bandit23'.
+-> Ran 'cat /tmp/8ca319486bfbbc3663ea0fbe81326349' to read its contents, and found the password there.
+-> Password for level 23: QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G
