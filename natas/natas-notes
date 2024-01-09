@@ -22,3 +22,45 @@ LEVEL 3
 -> Password for level 4: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
 ---
 LEVEL 4
+-> The 'Referer' HTTP header indicates the web address from which a resource has been requested.
+-> Used curl to connect to the webpage using the command 'curl -u natas4 -H "Referer: http://natas5.natas.labs.overthewire.org/" http://natas4.natas.labs.overthewire.org', then provided the password for natas4 (as seen in the entry for level 3).
+-> The HTML returned by the server revealed the password for the next level.
+-> Password for level 5: Z0NsrtIkJoKALBCLi5eqFfcRN82Au2oD
+---
+LEVEL 5
+-> One of the HTTP response headers revealed that a cookie named 'loggedin' was set to 0.
+-> Used curl to connect to the webpage using the command 'curl -u natas5 -b "loggedin=1" http://natas5.natas.labs.overthewire.org', then provided the password for natas5 (as seen in the entry for level 4).
+-> The HTML returned by the server revealed the password for the next level.
+-> Password for level 6: fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR
+---
+LEVEL 6
+-> When viewing the webpage sourcecode, noticed there was a PHP script to check the page's form input.
+-> Specifically, the form compared its input to a $secret variable presumably contained in the included file /includes/secret.inc.
+-> Navigating to http://natas6.natas.labs.overthewire.org/includes/secret.inc, we can find $secret to be equal to FOEIUWGHFEEUHOFUOIU.
+-> Returning back to the main page, you can submit the value for $secret in the form, which reveals the next password.
+-> Password for level 7: jmxSiH3SP6Sonf8dv66ng8v1cIEdjXWr
+---
+LEVEL 7
+-> You can pass this level by exploiting the Local File Inclusion (LFI) vulnerability.
+-> In an LFI exploit, if a script or a URL includes any parameters directly, the user can change the value of the parameter in the URL to access arbitrary files on the server.
+--> e.g.: If there is a URL reading 'http://vulnerable_host/preview.php?file=example.html', the user can edit the URL to read 'http://vulnerable_host/preview.php?file=../../../../etc/passwd', allowing them to read the server's passwd file.
+-> In this case, you can alter the 'page' parameter in the URL after clicking on either the Home or About page.
+-> If you change the page parameter to read 'page=/etc/natas_webpass/natas8', the page will display the contents of the file '/etc/natas_webpass/natas8', revealing the password.
+-> Password for level 8: a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB
+---
+LEVEL 8
+-> Examining the source code, you can find the encrypted password, as well as the method for encrypting it.
+-> In a php editor, you can run the inverse functions to decrypt the encrypted password.
+-> Entered the decrypted password (oubWYf2kBq) into the form, which revealed the next password.
+-> Password for level 9: Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd
+---
+LEVEL 9
+-> Used the PHP command injection vulnerability, which takes advantage of an arbitrary parameter being forwarded to and executed by the operating system.
+-> This can be done through a form, or directly in the URL if the parameters are included there.
+-> In this instance, entered the text '"" /etc/natas_webpass/natas10' into the search box, which will include natas10 in the grep command (revealed by reading the source code) and simply print every line in it, since the search string is just the empty string.
+-> Submitted the form, and saw the password for the next level printed as part of the output.
+-> Password for level 10: D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE
+---
+LEVEL 10
+-> Did exactly the same thing as in level 10 to find the password.
+-> Password for level 11: 1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg
