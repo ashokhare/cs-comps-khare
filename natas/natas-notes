@@ -1,0 +1,24 @@
+---
+LEVEL 0
+-> Using the inspector tool, we can find a comment in the page's source code with the password.
+-> Password for level 1: g9D9cREhslqBKtcA2uocGHPfMZVzeFK6
+---
+LEVEL 1
+-> You can use Ctrl-U to view a webpage's source code.
+-> Once again, we can find a comment in the page's source code with the password.
+-> Password for level 2: h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7
+---
+LEVEL 2
+-> The inspector showed an pixel image sourced from files/pixel.png.
+-> Clicking on the image link takes you to http://natas2.natas.labs.overthewire.org/files/pixel.png.
+-> Knowing there exists a subdirectory called 'files', we can access it by going to the url http://natas2.natas.labs.overthewire.org/files.
+-> Once on the directory page, you can see there is a file called 'users.txt'. You can click on it to open it. One of the passwords inside is for natas3.
+-> Password for level 3: G6ctbMJ5Nb4cbFwhpMPSvxGHhQ7I6W8Q
+---
+LEVEL 3
+-> Each webpage has a file called robots.txt which tells search engines which directories not to look in.
+-> Navigated to http://natas3.natas.labs.overthewire.org/robots.txt. Under the 'Disallow' header, the directory name 's3cr3t' was listed.
+-> Navigated to http://natas3.natas.labs.overthewire.org/s3cr3t. There, found another file named 'users.txt' that contained the password for natas4.
+-> Password for level 4: tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm
+---
+LEVEL 4
