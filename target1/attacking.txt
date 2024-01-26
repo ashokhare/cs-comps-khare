@@ -1,0 +1,17 @@
+--- TARGET 1 ATTACK PHASE ---
+
+We attacked manicmeese's virtual machine.
+
+Our first step was to find the machine's IP address using nmap to scan for active machines on our network.
+
+Once we found the IP address, we port-scanned it directly with nmap and found that the ssh and http ports (22 and 80) were open.
+
+Since Apache was running on port 80, we decided to check the website first. We examined the source code but were unable to find anything through there.
+
+We then ran gobuster to find hidden files, and found two secret text files, but neither contained much useful information to go off of.
+
+We also tried using curl to execute a directory traversal attack, but initially could not navigate anywhere besides a folder that stored the images.
+
+Eventually, we ran into a hidden directory called .ssh, which contained an RSA key which would enable us to log in via ssh.
+
+We used ssh with the -i flag to log in using the contents of the RSA key file. We were then able to log into the slab account and get a shell.
