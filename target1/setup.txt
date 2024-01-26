@@ -1,0 +1,13 @@
+--- TARGET 1 SETUP PHASE ---
+
+We used the virtual machine provided on Mike Tie's thumb drive. After it was set up, we made sure its FTP server was configured to run on boot.
+
+We changed the password of the slab account to youllneverguess using the command 'sudo passwd slab'.
+
+We set the following options to true in the vsftpd.conf (FTP configuration) file: Allow anonymous uploads, allow anonymous login, allow uploads, and set user of uploaded files to be root.
+
+We made an uploads directory on the FTP server (full filepath is /srv/ftp/uploads) and wrote a script as root in /srv/ftp that would use bash to execute every file stored in the uploads directory.
+
+As root, we scheduled a cron job to execute the bash script described above every five minutes. We redirected the output of the cron job to a file in /srv/ftp titled results.log, though this was just to improve troubleshooting.
+
+We also put a text file in /srv/ftp with the username and password for slab (slab/youllneverguess) to enable ssh login after ftp file transfer.
