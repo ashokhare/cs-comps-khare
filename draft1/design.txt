@@ -1,0 +1,91 @@
+Target Design, Draft 1
+Security Comps, Winter 2024
+
+<-----Scenario----->
+- Company name: Worst Purchase
+- What is it? a multi-level retail company with many different roles
+- This company offers various products for purchase and customer service (we're not actually going to be selling things)
+
+<-----Proposal----->
+- Possible plan 1:
+  - File upload attack/ Malware in images/uploads
+    - Through a customer service portal, the attacker uploads a vulnerable file through an image
+      to gain access to an employees account
+  - Over-privileged users
+    - Have an employee without many privileges but with access to IT type services
+  - Not allowing domains or accounts to expire
+    - Because of this, the attacker is able to access the hardcoded login/password of other higher-up
+      users
+  - Vulnerable third-party packages
+    - Once we have accessed the login/password of a higher-up user, the employee(a web devloper 
+      for the comapany) that we have access to is able to manipulate the files of the whole website
+    - As this user, we can insert malicious javascript code to gain access to other sections of the
+      website
+  - Directory traversal/ http header injection
+    - The malicious code we insert into the javascript 'unlocks' the ability to do http header injection
+      and thus allows us to traverse the directory and gain access to sensitive files including ssh/rsa keys
+    - e.g. Changing method of transmitting form data (JSON vs. URLencoded vs....)
+  - SSH
+    - ssh into root account
+
+
+<-----General vulnerability ideas----->
+- Vulnerable third-party packages
+  - British Airways got hacked through a vulnerability in third-party javascript package
+  - https://www.wired.co.uk/article/british-airways-data-breach-gdpr-fine 
+
+- Poor encryption/bad randomness
+  - Utilize an encryption scheme with a known vulnerability (Caesar cipher)
+
+- DDOS (Denial of Service)
+
+- Authorization
+  - Somehow letting a person gain access to someone's cookies
+  - Modification of cookies?
+  - Insufficient session-id length
+    - https://owasp.org/www-community/vulnerabilities/Insufficient_Session-ID_Length
+
+- Phishing email
+  - Social engineering 
+  - Trojan horse
+
+- Buffer overflow attack
+
+- Bad passwords
+  - Hard-coded initial password
+  - User did not change default password
+  - No salt or bad encryption scheme
+
+- No sanitizing of input
+  - Any form of unchecked user input (empty string, file types raw code, special characters, etc.)
+
+- File upload attack/ Malware in images/uploads
+
+- Vulnerable out-of-date software versions (i.e. Apache, nginx, etc.)
+
+- Over-privileged users
+
+- No error handling (adjacent to lack of input sanitization)
+
+- Not allowing domains or accounts to expire
+
+- Bad TLS
+  - Deals with information exchange between the user (client) and the server (application) 
+  - Applications frequently transmit sensitive information like authentication details, credit card 
+    information, and session tokens over a network
+  - By using weak algorithms or using expired or invalid certificates or not using SSL can allow
+    the communication to be exposed to untrusted users, which may compromise a web application and
+    or steal sensitive information
+  - Making use of this web security vulnerability, an attacker can sniff legitimate user's credentials and gaining access to the application
+  - Can steal credit card information
+
+- HTTP header injection
+
+- Directory traversal
+
+- RPO (relative path overwrite) attack
+  - First proposed by Gareth Heyes in 2014
+  - Uses differences between URL resolutions between nginx servers, misconfigured Apache servers
+    and browsers and use the css or js of the relative path included in the file to read css or js 
+    across directories, or even parse a oage that is not css or js as css or js, triggering further
+    attacks such as xss
