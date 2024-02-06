@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
+header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 125px;
+	background-color: skyblue;
+	z-index: 2;
+}
+
+#header, nav {
+	margin: 0 5%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.nav-item {
+	border-radius: 5%;
+	flex-grow: 1;
+	text-align: center;
+}
+
+.nav-item:hover {
+	background-color: lightgray;
+}
+
+.collapsible {
+	display: none;
+}
+
+#body {
+	background-color: lightyellow;
+	margin-top: 125px;
+	padding: 2.5%;
+}
