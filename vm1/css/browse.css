@@ -1,0 +1,21 @@
+#body {
+    display: flex;
+    flex-direction: row;
+}
+
+#form {
+    width: 25%;
+    border-left: 10px;
+    border-color: black;
+}
+
+#products {
+    width: 75%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.product {
+    width: 33%;
+}
