@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Worst Purchase - Employee Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/globals.css">
+  </head>
+  <body>
+    <main>
+
+      <header>
+        <section id="header">
+	  <div id="logo">
+	    <h1>Worst Purchase: Employees</h1>
+	  </div>
+	</section>
+	<nav id="top-bar">
+	  <div class="nav-item">
+	    <a style="color:black; text-decoration:none" href="/"><h2>Home</h2></a>
+	  </div>
+	  <div class="nav-item">
+		<a style="color:black; text-decoration:none" href="/todo"><h2>To Do</h2></a>
+	  </div>
+	  <div class="nav-item">
+	    <a style="color:black; text-decoration:none" href="/references"><h2>References</h2></a>
+	  </div>
+	</nav>
+      </header>
+      <section id="body">
+        {% block content %}
+        {% endblock content %}
+      </section>
+    </main>
+    <script src="static/globals.js"></script>
+</body>
+</html>

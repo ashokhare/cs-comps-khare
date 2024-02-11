@@ -1,0 +1,20 @@
+{% extends 'employee-base.html' %}
+<!-- Structure of to do list from https://www.w3schools.com/howto/howto_js_todolist.asp -->
+
+{% block content %}
+<link rel="stylesheet" href="static/todo.css">
+<div id="myDIV" class="header">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Task...">
+    <span onclick="newElement()" class="addBtn">Add</span>
+  </div>
+  <br>
+  <ul id="myUL">
+    <li>Set up a meeting with Lillert</li>
+    <li class="checked">Email progress report to CEO</li>
+    <li>Delete old admin accounts</li>
+    <li>List new items for sale</li>
+    <li>Organize office</li>
+  </ul>
+<script src="static/todo.js"></script>
+{% endblock content %}
