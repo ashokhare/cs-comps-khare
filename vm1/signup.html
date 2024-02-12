@@ -1,60 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Create Worst Purchase Account</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/globals.css">
-        <link rel="stylesheet" href="css/signup.css">
-    </head>
-    <body>
-        <main>
-            <header>
-                <section id="header">
-                    <div id="logo">
-                        <h1>Worst Purchase</h1>
-                    </div>
-                    <div id="login-signup">
-                        <a href="login.html">Log In/Sign Up</a>
-                    </div>
-                </section>
-                <nav id="top-bar">
-                    <div class="nav-item">
-                        <h2>Home</h2>
-                        <p class="collapsible">Section 1</p>
-                        <p class="collapsible">Section 2</p>
-                    </div>
-                    <div class="nav-item">
-                        <h2>About</h2>
-                        <p class="collapsible">About the Company</p>
-                        <p class="collapsible">Meet Our Team</p>
-                        <p class="collapsible">Meet the Losers Who Got Fired</p>
-                    </div>
-                    <div class="nav-item">
-                        <h2>Purchase</h2>
-                    </div>
-                    <div class="nav-item">
-                        <h2>Support</h2>
-                    </div>
-                </nav>
-            </header>
+{% extends 'base.html' %}
 
-            <section id="body">
-                <div id="form">
-                    <h1>Create an Account</h1>
-                    <form action="php/signup.php" method="post">
-                        <label for="uname">Enter a Username:</label>
-                        <br>
-                        <input name="uname" id="uname" type="text">
-                        <br>
-                        <label for="passwd">Enter a Password:</label>
-                        <br>
-                        <input name="passwd" id="passwd" type="text">
-                        <br>
-                        <input type="submit" value="Create Account">
-                    </form>
-                </div>
-            </section>
-        </main>
-        <script src="js/globals.js"></script>
-    </body>
-</html>
+{% block content %}
+    <div id="form">
+        <h1>Create an Account</h1>
+        <form action="php/signup.php" method="post">
+            <label for="uname">Enter a Username:</label>
+            <br>
+            <input name="uname" id="uname" type="text">
+            <br>
+            <label for="passwd">Enter a Password:</label>
+            <br>
+            <input name="passwd" id="passwd" type="text">
+            <br>
+            <input type="submit" value="Create Account">
+        </form>
+    </div>
+{% endblock content %}
