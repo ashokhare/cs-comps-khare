@@ -1,1 +1,9 @@
-List of new items for sale
+New items that need to be listed for sale:
+
+---------------------
+Item | Price
+---------------------
+Camcorder  | $100.51
+GPS Device | $55.88
+MP3 Player | $34.99
+Hard Drive | $65.05

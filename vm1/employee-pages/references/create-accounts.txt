@@ -1,1 +1,14 @@
-This is how you create an account
+How to create new employee accounts:
+
+1. Set username to be employee's name
+2. Set temporary password to be: WhyShouldn'tYouTellJokes2aDuck?
+3. Restrict security permissions as necessary
+4. Send the following instructions to the new employee
+
+Template message to be sent to new employee:
+    "Hello _____! Welcome to Worst Purchase! Here are your employee credentials:
+    
+    Username: [employee name]
+    Temporary password: WhyShouldn'tYouTellJokes2aDuck?
+
+    Please change your temporary password ASAP!"
