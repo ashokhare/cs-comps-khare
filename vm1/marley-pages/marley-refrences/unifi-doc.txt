@@ -1,0 +1,8 @@
+How to check logging files through Unifi
+
+1. Run the following lines of code
+    $ systemctl start unifi
+
+2. Login to Unifi
+
+3. 

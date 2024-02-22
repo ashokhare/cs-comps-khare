@@ -1,0 +1,5 @@
+How to remove old employee accounts:
+
+1. Immediately reset former employee account password to be: BecauseTheyllQuackUp
+2. Migrate important documents/document changes
+3. Remove ALL account permissions

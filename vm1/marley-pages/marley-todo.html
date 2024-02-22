@@ -1,0 +1,50 @@
+<!-- Structure of to do list from https://www.w3schools.com/howto/howto_js_todolist.asp -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Worst Purchase - Employee Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/globals.css">
+    <link rel="stylesheet" href="static/todo.css">
+  </head>
+  <body>
+    <main>
+
+      <header>
+        <section id="header">
+	  <div id="logo">
+	    <h1>Worst Purchase: Employees</h1>
+	  </div>
+	</section>
+	<nav id="top-bar">
+	  <div class="nav-item">
+	    <a style="color:black; text-decoration:none" href="/"><h2>Home</h2></a>
+	  </div>
+	  <div class="nav-item">
+		<a style="color:black; text-decoration:none" href="/todo"><h2>To Do</h2></a>
+	  </div>
+	  <div class="nav-item">
+	    <a style="color:black; text-decoration:none" href="/references"><h2>References</h2></a>
+	  </div>
+	</nav>
+      </header>
+      <section id="body">
+        <div id="myDIV" class="header">
+            <h2>My To Do List</h2>
+            <input type="text" id="myInput" placeholder="Task...">
+            <span onclick="newElement()" class="addBtn">Add</span>
+          </div>
+          <br>
+          <ul id="myUL">
+            <li>Email progress report to CEO</li>
+            <li class="checked">Transfer files to replacement</li>
+            <li>Secure Unifi</li>
+            <li>Check for software updates</li>
+          </ul>
+      </section>
+    </main>
+    <script src="static/globals.js"></script>
+    <script src="static/todo.js"></script>
+</body>
+</html>
