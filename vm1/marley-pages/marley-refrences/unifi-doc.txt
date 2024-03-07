@@ -5,4 +5,4 @@ How to check logging files through Unifi
 
 2. Login to Unifi
 
-3. 
+3. Check/manage the logging files!
